@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body style="text-align: center;">
+
+    <h2>Form Input Nilai</h2>
+    
+    <form onsubmit="event.preventDefault(); input();">
+        
+        <label for="NPM">Masukkan Nim</label> <br>
+        <input type="number" id="NPM" required>
+
+        <br><br>
+
+        <label for="nilai">Masukkan Nilai Matkul</label> <br>
+        <input type="number" id="nilai" required>
+
+        <br>
+        <br>
+
+        <button type="submit" onclick="input()" >Enter</button>
+
+        <div style="display: flex; justify-content: center;">
+            <p>NIM = </p>
+            <p id="hasilnim"></p>
+
+        </div>
+
+        <div style="display: flex; justify-content: center;">
+            <p>Nilai MK = </p>
+            <p id="hasilnilai"></p>
+            <p style="margin-left: 2%;" id="hurufmutu"></p>
+        </div>
+
+    </form>
+
+    
+
+    <script>
+
+        function input(){
+
+            let nim = document.getElementById("NPM").value;
+            let nilaimk = document.getElementById("nilai").value;
+            
+            if(nilaimk === "" || nim === "" ){
+                alert("Input harus diisi semua")
+                return
+            }
+
+            let text1 = nim;
+            let text2 = nilaimk;
+
+            
+            
+            if(isNaN(nilaimk) || nilaimk < 0 || nilaimk > 100){
+                alert("INput gagal, Masukkan hanya angka 1 - 100")
+                return
+                
+            }else if(nilaimk >= 80 ){
+                textnilai = "Huruf Mutu = A";
+
+            }else if(nilaimk >= 70 ){
+                textnilai = "Huruf Mutu = B";
+
+            }else if(nilaimk >= 60){
+                textnilai = "Huruf Mutu = C";
+
+            }else if(milaimk >= 50){
+                textnilai = "Huruf Mutu = D";
+
+            }else{
+                textnilai = "Huruf Mutu = E";
+
+            }
+
+            document.getElementById("hasilnim").innerHTML = text1;
+            document.getElementById("hasilnilai").innerHTML = text2;
+
+
+
+            
+
+            document.getElementById("hurufmutu").innerHTML = textnilai;
+
+
+
+        }
+
+    </script>
+    
+
+    
+
+</body>
+</html>
