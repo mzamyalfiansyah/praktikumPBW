@@ -1,0 +1,22 @@
+h2{
+    color: blue;
+}
+
+#nama{
+    width: 300px;
+    padding: 10px;
+}
+
+#nim{
+    width: 300px;
+    padding: 10px;
+}
+
+#email{
+    width: 300px;
+    padding: 10px;
+}
+
+.layanan{
+    display: flex;
+}
