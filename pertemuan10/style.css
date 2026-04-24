@@ -1,0 +1,37 @@
+body {
+    margin: 0 auto;
+
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(7, 9, 22);
+    position: sticky;
+    width: 100%;
+    padding: 10px;
+    top: 0;
+    z-index: 100;
+}
+
+nav .isi {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    color: white;
+    
+}
+
+.menu a{
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.menu a:hover{
+    color: rgb(255, 196, 0);
+}
+

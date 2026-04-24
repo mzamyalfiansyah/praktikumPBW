@@ -17,6 +17,10 @@
     }
 
     ?>
+
+    <br>
+    <br>
+    <a href="soal5.php">Kembali</a> 
     
 </body>
 </html>
