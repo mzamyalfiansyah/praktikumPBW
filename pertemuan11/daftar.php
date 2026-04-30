@@ -5,102 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
- 
-    <title>Daftar</title>
+    <title>Document</title>
 </head>
-    <body>
-
-        <div style="display: flex; justify-content: center; align-items: center;">
+    <body style="margin: 0; padding: 0; background-color: #006AFF;">
 
 
-
-            <div style="border: 1px black solid; width: 30%; border-radius: 10px; padding: 30px; margin: 50px auto;">
-            <?php 
-                session_start();
-            if (isset($_SESSION['error'])): ?>
-                <div id="alertBox" style="color: white; background: red; padding: 10px;">
-                    <?= $_SESSION['error']; ?>
-                </div>
-
-                <script>
-                    setTimeout(function() {
-                        document.getElementById("alertBox").style.display = "none";
-                    }, 3000); // hilang setelah 3 detik
-                </script>
-
-            <?php 
-                unset($_SESSION['error']); 
-                endif; 
-            ?>
-
-            <?php
-                if (isset($_SESSION['succes'])): ?>
-                <div id="alertBox" style="color: white; background: green; padding: 10px;">
-                    <?= $_SESSION['succes']; ?>
-                </div>
-
-                <script>
-                    setTimeout(function() {
-                        document.getElementById("alertBox").style.display = "none";
-                    }, 3000); // hilang setelah 3 detik
-                </script>
-
-            <?php 
-                unset($_SESSION['succes']); 
-                endif; 
-            ?>
+        <div style="display: flex; flex-direction: column; margin-top: 2%;">
             
-                <h2 style="color: blue;">Daftar Akun Pengguna</h2>
 
+            <div style="
+                        border-radius:10px; 
+                        width: 30%; 
+                        margin: auto; 
+                        padding: 20px; 
+                        background-color: white;
+                        ">
+                
+                <br>
+                
+                
+                <h4 style="text-align: center;">Daftar</h4>
+
+                <?php
+                    session_start();
+                    if(isset($_SESSION['error'])){
+                ?>
+                    <div id="alertBox" style="
+                        background: #ff4d4d;
+                        color: white;
+                        padding: 12px;
+                        border-radius: 6px;
+                        text-align: center;
+                        margin-bottom: 15px;
+                        font-weight: bold;
+                        transition: opacity 0.5s ease;
+                    ">
+                        <?= $_SESSION['error']; ?>
+                    </div>
+
+                    <script>
+                        setTimeout(() => {
+                            const alertBox = document.getElementById('alertBox');
+                            if(alertBox){
+                                alertBox.style.opacity = '0';
+                                setTimeout(() => {
+                                    alertBox.style.display = 'none';
+                                }, 500);
+                            }
+                        }, 3000);
+                    </script>
+                <?php
+                    unset($_SESSION['error']);
+                }
+                ?>
+
+                
+
+                <?php
+                    if(isset($_SESSION['success'])){
+                ?>
+                    <div id="alertBox" style="
+                        background: #377D3E;
+                        color: white;
+                        padding: 12px;
+                        border-radius: 6px;
+                        text-align: center;
+                        margin-bottom: 15px;
+                        font-weight: bold;
+                        transition: opacity 0.5s ease;
+                    ">
+                        <?= $_SESSION['success']; ?>
+                    </div>
+
+                    <script>
+                        setTimeout(() => {
+                            const alertBox = document.getElementById('alertBox');
+                            if(alertBox){
+                                alertBox.style.opacity = '0';
+                                setTimeout(() => {
+                                    alertBox.style.display = 'none';
+                                }, 500);
+                            }
+                        }, 3000); 
+                    </script>
+                <?php
+                    unset($_SESSION['success']);
+                }
+                ?>
 
                 <form action="prosesdaftar.php" method="post">
 
-                            <?php if (isset($_SESSION['error'])): ?>
-                <div id="alertBox" style="color: white; background: red; padding: 10px;">
-                    <?= $_SESSION['error']; ?>
-                </div>
-
-                <script>
-                    setTimeout(function() {
-                        document.getElementById("alertBox").style.display = "none";
-                    }, 3000); // hilang setelah 3 detik
-                </script>
-
-            <?php 
-            unset($_SESSION['error']); 
-            endif; 
-            ?>
-
-                    <label for="username">Masukkan Username :</label>
-                    <input class="form-control" type="text" name="username" placeholder="Username" required>
+                    <label for="username">Username :</label><br>
+                    <input class="form-control" type="text" name="username" placeholder="Masukkan Username" style="width: 100%;">
 
                     <br>
 
-                    <label for="email">Masukkan Email :</label>
-                    <input class="form-control" type="email" name="email" placeholder="Email" required>
-                    
+                    <label for="password">Email :</label><br>
+                    <input class="form-control" type="Email" name="email" placeholder="Masukkan Email" style="width: 100%;">
+
                     <br>
 
-                    <label for="password1">Masukkan Password :</label>
-                    <input class="form-control" type="password" name="password1" placeholder="password" required>
-                    
-                    <br>
-                                        
-                    <label for="password2">Ulangi Password :</label>
-                    <input class="form-control" type="password" name="password2" placeholder="password" required>
-                    
+                    <label for="password1">Password :</label><br>
+                    <input class="form-control" type="password" name="password1" placeholder="Masukkan Password" style="width: 100%;">
+
                     <br>
 
-                    <button class="btn btn-primary" type="submit" style="width: 100%;">Daftar</button>
+                    <label for="password2">Ulangi Password :</label><br>
+                    <input class="form-control" type="password" name="password2" placeholder="Masukkan Password" style="width: 100%;">
+
+                    <br>
+
+
+
+                    <button class="btn btn-primary" type="submit" style="width:100%;">Masuk</button>
+
+                    <br>
+                    <p style="text-align: center;">Udah punya akun? <a href="login.php"style="text-decoration: none;">tinggal login</a></p>
+
                 </form>
 
-                <br>
-                
-                <p style="text-align: center;">Udah punya akun? ngapain daftar, <a href="login.php" style="text-decoration: none;">Login</a></p>
-
-            </div>            
+            </div>
 
         </div>
+
+        
         
     </body>
 </html>

@@ -3,42 +3,32 @@
     session_start();
 
     include "konek.php";
+    
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $username = $_POST['username'];
-        $password1= $_POST['password1'];
-        $password2 = $_POST['password2'];
-        $email = $_POST["email"];
+        $email = $_POST['email'];
 
-        if($password1 == $password2){
-            //echo "password sama";
+        if($_POST['password1'] == $_POST['password2']){
+            $password = password_hash($_POST['password1'], PASSWORD_DEFAULT);
 
-            $hash = password_hash($password1, PASSWORD_DEFAULT);
-            //echo $hash;
-            $stmt = $conn->prepare("INSERT INTO pengguna SET username=?, password=?, email=?");
-            $stmt->bind_param("sss", $username,  $hash, $email);
+            // echo "sama";
+
+            $stmt = $conn->prepare('INSERT INTO admin (username, email, password) VALUES (?, ?, ?)');
+            $stmt->bind_param('sss', $username, $email, $password);
             $stmt->execute();
 
-            $stmt->close();
-
-            $_SESSION['succes'] = "Akun berhasil dibuat nih, tinggal login!";
+            $_SESSION['success'] = "Berhasil buat akun!";
             header("Location: daftar.php");
+            exit;
 
         }else{
-            //echo "password beda";
+            // echo "beda";
 
-            $_SESSION['error'] = "Password harus sama !";
+            $_SESSION['error'] = "Password Harus Sama Dong!";
             header("Location: daftar.php");
-            exit;   
-
+            exit;
         }
-
-
-        
-
-
-
-
 
 
 
